@@ -42,26 +42,27 @@ public class ReactNativeRestart extends ReactContextBaseJavaModule {
 
     private void loadBundle() {
         clearLifecycleEventListener();
-        try {
-            final ReactInstanceManager instanceManager = resolveInstanceManager();
-            if (instanceManager == null) {
-                return;
-            }
-
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        instanceManager.recreateReactContextInBackground();
-                    } catch (Exception e) {
-                        loadBundleLegacy();
-                    }
-                }
-            });
-
-        } catch (Exception e) {
-            loadBundleLegacy();
-        }
+        loadBundleLegacy();
+        // try {
+        //     final ReactInstanceManager instanceManager = resolveInstanceManager();
+        //     if (instanceManager == null) {
+        //         return;
+        //     }
+        //
+        //     new Handler(Looper.getMainLooper()).post(new Runnable() {
+        //         @Override
+        //         public void run() {
+        //             try {
+        //                 instanceManager.recreateReactContextInBackground();
+        //             } catch (Exception e) {
+        //                 loadBundleLegacy();
+        //             }
+        //         }
+        //     });
+        //
+        // } catch (Exception e) {
+        //     loadBundleLegacy();
+        // }
     }
 
     private static ReactInstanceHolder mReactInstanceHolder;
